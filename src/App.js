@@ -13,13 +13,18 @@ function App() {
     setTodo(getTodo.concat(todo));
   };
 
+  const removeTodo = (id) => {
+    const final = getTodo.filter((data) => data.id !== id);
+    setTodo(final);
+  };
+
   return (
     <div className="App">
       <div className="bg-green-200 rounded min-h-screen flex items-center">
         <div className="w-3/4 bg-white mx-auto">
           <Header />
           <InputTodo onCreateTodo={eventCreateTodo} />
-          <ShowTodo dataTodos={getTodo} />
+          <ShowTodo dataTodos={getTodo} removeTodo={removeTodo} />
         </div>
       </div>
     </div>

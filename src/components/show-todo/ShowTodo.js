@@ -1,11 +1,21 @@
 const ShowTodo = (props) => {
+  const removeItem = (e, id) => {
+    e.preventDefault();
+    props.removeTodo(id);
+  };
+
   return (
     <ul className="px-8 py-2">
       {props.dataTodos.map((todo) => {
         return (
           <li key={todo.id} className="py-2 flex justify-between">
             <p>{todo.title}</p>
-            <button className="py-1 px-1 rounded appearance-none border border-red-600 text-red-600 hover:bg-red-600 hover:text-white">Remove</button>
+            <button
+              className="py-1 px-1 rounded appearance-none border border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+              onClick={(e) => removeItem(e, todo.id)}
+            >
+              Remove
+            </button>
           </li>
         );
       })}
